@@ -1,19 +1,4 @@
 <?php
-/*
-
-SCHEMA
-
-
-
-CREATE TABLE IF NOT EXISTS `monitor` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `load1` float NOT NULL,
-  `load5` float NOT NULL,
-  `load15` float NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=0 ;
-*/
 
 define('SERVER','localhost');
 define('USER','user');
@@ -26,14 +11,9 @@ $c=mysql_connect(SERVER,USER,PASSWORD);
 mysql_select_db(DATABASE);
 
 if($_GET['savetodb'] || $argv[1]=='savetodb'){
-	/*
-	ob_start();
-	$test = system('uptime');
-	ob_end_clean();
-*/
+
 	$loads = sys_getloadavg();
 
-	//$uptime=trim(substr($test,-5,5));
 	print_r($loads);
 
 	$q= "INSERT INTO `".DATABASE."`.`".TABLE."` (`timestamp`, `load1`, `load5`, `load15`) 
@@ -41,10 +21,6 @@ if($_GET['savetodb'] || $argv[1]=='savetodb'){
 
 	mysql_query($q); 
 }else{
-
-
-
-	//get data from mysql
 
 	$q= "SELECT * FROM `".DATABASE."`.`".TABLE."`;";
 
