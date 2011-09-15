@@ -1,5 +1,5 @@
-This is a small script I whipped up in about 15 minutes because my web server was slow, and I wanted to be able to see the load and it's evolution, as well as being able to record to show the people I buy the hosting from how bad things really are ;)
-___
+This is a small script I whipped up in about 15 minutes because my web server was slow, and I wanted to be able to see the load and it's evolution, as well as being able to record its evolution to show the people I buy the hosting from how bad things really are ;)
+
 Requirements
 ---
 * Mysql, although it is trivial to modify the script to use, say a flat text file for data storage
@@ -7,12 +7,25 @@ Requirements
 * With access to `cron`
 * javascript on the client side
 
-___
 Installation
 ---
 * Copy wherever you want on your web server
 * Change the `define`d constants to your values
-* Update your crontab to fetch this url every minute
+* Create the required database table.
+
+Here is the schema: 
+
+
+    CREATE TABLE IF NOT EXISTS monitor (
+      `id` int(11) NOT NULL AUTO_INCREMENT,
+      `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      `load1` float NOT NULL,
+      `load5` float NOT NULL,
+      `load15` float NOT NULL,
+      PRIMARY KEY (`id`)
+    ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=0 ;
+
+* Update your crontab to execute the script at your chosen frequency
 
 For this last point, it all depends on your web host, sometimes you can create cron tasks from your administration panel, such as cPanel, otherwise, you'll have to login with ssh.
 
