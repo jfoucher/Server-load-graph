@@ -42,18 +42,11 @@ if($_GET['savetodb'] || $argv[1]=='savetodb'){
 	<html>
 	<head>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-	    <script type="text/javascript">
-	    
-	      // Load the Visualization API and the piechart package.
-	      google.load('visualization', '1.0', {'packages':['corechart','annotatedtimeline','table']});
-	      
-	      // Set a callback to run when the Google Visualization API is loaded.
-	      google.setOnLoadCallback(drawChart);
-
-
-
+	<script type="text/javascript">
+	google.load('visualization', '1.0', {'packages':['corechart','annotatedtimeline','table']});
+	google.setOnLoadCallback(drawChart);
+	
 	function drawChart() {
-
 	   var data = new google.visualization.DataTable(
 	   {
 	     cols: [{id: 'date', label: 'Date', type: 'date'},
@@ -63,22 +56,19 @@ if($_GET['savetodb'] || $argv[1]=='savetodb'){
 	     rows: [
 		    <?php echo $data ?>
 		   ]
-	   }
-	) 
-
-	var options = {'title':'15 minutes load xiilo.com',
+	   }); 
+		var options = {'title':'15 minutes load xiilo.com',
 		             'width':400,'displayAnnotations': true,
 		             'height':300};
 
-	 
-	  var annotatedtimeline = new google.visualization.AnnotatedTimeLine(
-	      document.getElementById('visualization'));
-	  annotatedtimeline.draw(data, options);
+	  	var annotatedtimeline = new google.visualization.AnnotatedTimeLine(
+	      	document.getElementById('visualization'));
+	  	annotatedtimeline.draw(data, options);
 	}
 	</script>
 	</head>
 	<body>
-	<div id="visualization" style="width:600px;height:400px;margin:0 auto"></div>
+		<div id="visualization" style="width:600px;height:400px;margin:0 auto"></div>
 	</body>
 	</html>
 <?php
