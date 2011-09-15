@@ -2,7 +2,7 @@ This is a small script I whipped up in about 15 minutes because my web server wa
 
 Requirements
 ---
-* Mysql, although it is trivial to modify the script to use, say a flat text file for data storage
+* Mysql, although it is trivial to modify the script to use say a flat text file for data storage
 * A linux server (can't get the server load on windows)
 * With access to `cron`
 * javascript on the client side
