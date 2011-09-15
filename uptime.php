@@ -1,6 +1,6 @@
 <?php
+/*
 
-/* 
 SCHEMA
 
 
@@ -25,7 +25,7 @@ define('TABLE','table');
 $c=mysql_connect(SERVER,USER,PASSWORD);
 mysql_select_db(DATABASE);
 
-if($_GET['savetodb']){
+if($_GET['savetodb'] || $argv[1]=='savetodb'){
 	/*
 	ob_start();
 	$test = system('uptime');
