@@ -10,7 +10,7 @@ define('TABLE','table');
 $c=mysql_connect(SERVER,USER,PASSWORD);
 mysql_select_db(DATABASE);
 
-if($_GET['savetodb'] || $argv[1]=='savetodb'){
+if((isset($_GET['savetodb']) && $_GET['savetodb']) || $argv[1]=='savetodb') {
 
 	$loads = sys_getloadavg();
 
@@ -20,7 +20,7 @@ if($_GET['savetodb'] || $argv[1]=='savetodb'){
 		VALUES ( CURRENT_TIMESTAMP, '".$loads[0]."', '".$loads[1]."', '".$loads[2]."');";
 
 	mysql_query($q); 
-}else{
+} else {
 
 	$q= "SELECT * FROM `".DATABASE."`.`".TABLE."`;";
 
